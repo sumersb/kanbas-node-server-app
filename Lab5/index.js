@@ -13,3 +13,5 @@ export default function Lab5(app) {
     Module(app);
     WorkingWithArrays(app);
 };
+
+//Comment
