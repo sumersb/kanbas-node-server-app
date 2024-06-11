@@ -3,6 +3,11 @@ const assignment = {
     description: "Create a NodeJS server with ExpressJS",
     due: "2021-10-10", completed: false, score: 0,
 };
+const module = {
+    id: 1, name: "Test Module",
+    description: "Testing a module server endpoint",
+    course: "CS5610"
+};
 export default function WorkingWithObjects(app) {
     app.get("/lab5/assignment", (req, res) => {
         res.json(assignment);
@@ -24,5 +29,13 @@ export default function WorkingWithObjects(app) {
         const { completed } = req.params;
         assignment.completed = completed === 'true';
         res.json(assignment)
+    });
+
+    app.get("/lab5/module", (req, res) => {
+        console.log("Here I've been hit")
+        res.json(module);
+    });
+    app.get("/lab5/module/name", (req, res) => {
+        res.json(module.name);
     });
 };

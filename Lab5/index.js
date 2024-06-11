@@ -1,7 +1,6 @@
 import QueryParameters from "./QueryParameters.js";
 import PathParameters from "./PathParameters.js";
 import WorkingWithObjects from "./WorkingWithObjects.js";
-import Module from "./Module.js";
 import WorkingWithArrays from "./WorkingWithArrays.js";
 export default function Lab5(app) {
     app.get("/lab5/welcome", (req, res) => {
@@ -10,7 +9,6 @@ export default function Lab5(app) {
     QueryParameters(app);
     PathParameters(app);
     WorkingWithObjects(app);
-    Module(app);
     WorkingWithArrays(app);
 };
 
