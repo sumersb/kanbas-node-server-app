@@ -11,10 +11,11 @@ import UserRoutes from "./Users/routes.js";
 import session from "express-session";
 const CONNECTION_STRING = process.env.MONGO_CONNECTION_STRING || "mongodb://127.0.0.1:27017/kanbas"
 mongoose.connect(CONNECTION_STRING);
+console.log(CONNECTION_STRING);
 const app = express();
 app.use(
     cors({
-        credentials: true,
+        credentials: false,
         origin: process.env.NETLIFY_URL || "http://localhost:3000",
     })
 );
