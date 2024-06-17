@@ -15,7 +15,7 @@ console.log(CONNECTION_STRING);
 const app = express();
 app.use(
     cors({
-        credentials: false,
+        credentials: true,
         origin: process.env.NETLIFY_URL || "http://localhost:3000",
     })
 );
