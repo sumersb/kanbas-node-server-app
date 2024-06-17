@@ -10,6 +10,7 @@ export default function UserRoutes(app) {
     };
     const findAllUsers = async (req, res) => {
         const { role, name } = req.query;
+        console.log("hi")
         if (role) {
             const users = await dao.findUsersByRole(role);
             res.json(users);
@@ -21,6 +22,7 @@ export default function UserRoutes(app) {
             return;
         }
         const users = await dao.findAllUsers();
+        console.log(users)
         res.json(users);
         return;
     };
