@@ -3,7 +3,6 @@ export default function CourseRoutes(app) {
 
     const findAllCourses = async (req, res) => {
         const courses = await dao.findAllCourses();
-        console.log("Courses: ",courses)
         res.json(courses);
         return;
     };
