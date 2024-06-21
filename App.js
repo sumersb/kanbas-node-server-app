@@ -6,17 +6,17 @@ import Hello from "./Hello.js"
 import Lab5 from './Lab5/index.js';
 import CourseRoutes from './Courses/routes.js';
 import ModuleRoutes from './Modules/routes.js';
+import EnrollmentRoutes from './Enrollments/routes.js';
 import AssignmentRoutes from './Kanbas/Assignments/routes.js';
 import UserRoutes from "./Users/routes.js";
 import session from "express-session";
 const CONNECTION_STRING = process.env.MONGO_CONNECTION_STRING || "mongodb://127.0.0.1:27017/kanbas"
 mongoose.connect(CONNECTION_STRING);
-console.log(CONNECTION_STRING);
 const app = express();
 app.use(
     cors({
         credentials: true,
-        origin: "https://a6--kanbas-react-app-sumer.netlify.app"
+        origin: process.env.NETLIFY_URL || "http://localhost:3000",
     })
 );
 const sessionOptions = {
@@ -37,6 +37,7 @@ app.use(express.json());
 Lab5(app);
 CourseRoutes(app);
 ModuleRoutes(app);
+EnrollmentRoutes(app)
 AssignmentRoutes(app);
 Hello(app);
 UserRoutes(app);
