@@ -12,8 +12,8 @@ export const findQuizzesByPartialName = (partialName) => {
         $or: [{ title: { $regex: regex } }],
     });
 };
-export const findQuizByCourseID = (courseID) => model.find({course_id: courseID});
+export const findQuizzesByCID = (cid) => model.find({course_id : cid})
 
 export const findQuizById = (quizID) => model.findById(quizID);
-export const updateQuiz = (quizID, quiz) => model.updateOne({ _id: quizID }, { $set: quiz });
-export const deleteQ = (quizID) => model.deleteOne({ _id: quizID });
+export const updateQuiz = (quiz) => model.updateOne({ _id: quiz._id }, { $set: quiz });
+export const deleteQuiz = (quizID) => model.deleteOne({ _id: quizID });
