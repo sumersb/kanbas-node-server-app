@@ -1,5 +1,6 @@
 import * as dao from "./dao.js";
 import { findStudentEnrollments, createEnrollment } from "../Enrollments/dao.js";
+import { ObjectId } from "mongodb";
 export default function CourseRoutes(app) {
 
     const findAllCourses = async (req, res) => {
@@ -21,13 +22,11 @@ export default function CourseRoutes(app) {
         const currentUser = req.session["currentUser"];
         const id = currentUser._id;
         const enrollments = await findStudentEnrollments(id);
-        const courseIDs = enrollments.map((e) => e.course_id);
-        const enrolledCourses = await dao.findCourse({ $in: courseIDs });
-        const enrolledCourseIds = new Set(enrolledCourses);
-        console.log(enrolledCourseIds);
+        const enrolledCourseIDs = new Set(enrollments.map((e) => String(e.course_id)));
+        console.log(enrolledCourseIDs);
         const allCourses = await dao.findAllCourses();
-        console.log(allCourses)
-        const enrollableCourses = allCourses.filter((c) => !enrolledCourseIds.has(c));
+        const enrollableCourses = allCourses.filter((c) => !enrolledCourseIDs.has(String(c._id)));
+        console.log(enrollableCourses)
         res.json(enrollableCourses);
     }
 

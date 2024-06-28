@@ -18,7 +18,7 @@ const app = express();
 app.use(
     cors({
         credentials: true,
-        origin: "https://project--kanbas-react-app-sumer.netlify.app",
+        origin: "https://project--kanbas-react-app-sumer.netlify.app/",
     })
 );
 const sessionOptions = {
